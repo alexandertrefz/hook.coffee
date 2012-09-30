@@ -20,6 +20,7 @@ test "#hook.event.add(obj, event)", ->
 
 
 test "#hook.event.remove(obj, [[event], [handler]])", ->
+    expect 0
 	# this method straight up only gets the handle and calls .removeHandler, so there are no DRY tests to do
 
 
