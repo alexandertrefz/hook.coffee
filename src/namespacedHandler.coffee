@@ -10,7 +10,7 @@ class NamespacedHandler
 			return false
 		
 		for namespace in event.getNamespaces()
-			return false unless ~_.indexOf @namespaces, namespace
+			return false unless ~@namespaces.indexOf namespace
 		
 		return true
 	

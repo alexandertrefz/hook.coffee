@@ -20,7 +20,7 @@ class Handle
 	
 	addHandler: (event, handler) ->
 		# Split for IE7
-		if ~_.indexOf event.eventName.split(""), " "
+		if ~event.eventName.split("").indexOf " "
 			@_splitEvent event, arguments, "addHandler"
 			return
 		
@@ -41,7 +41,7 @@ class Handle
 	
 	removeHandler: (event, handler) ->
 		# Split for IE7
-		if event? and ~_.indexOf event.eventName.split(""), " "
+		if event? and ~event.eventName.split("").indexOf " "
 			@_splitEvent event, arguments, "removeHandler"
 			return
 		
@@ -53,7 +53,7 @@ class Handle
 		unless event.hasNamespaces()
 			if event? and handler? and typeof handler is "function"
 				eventArr = @_getEventsArr event
-				eventArr?.splice(_.indexOf(eventArr, handler), 1)
+				eventArr?.splice(eventArr.indexOf(handler), 1)
 			else if event? and not handler?
 				@events[event.eventName] = []
 		else
@@ -78,13 +78,13 @@ class Handle
 	
 	triggerHandlers: (obj, event, data = []) ->
 		# Split for IE7
-		if ~_.indexOf event.eventName.split(""), " "
+		if ~event.eventName.split("").indexOf " "
 			@_splitEvent event, arguments, "triggerHandlers"
 			return
 		
 		event.data = data
 		
-		unless _.isArray(data)
+		unless Array.isArray(data)
 			data = [data]
 		
 		handlerArgs = [event].concat data
@@ -96,7 +96,7 @@ class Handle
 				for handler in eventArr
 					handler.apply obj, handlerArgs
 		
-		if not event.hasEventName() or ~_.indexOf(@namespacedEvents, event.getEventName())
+		if not event.hasEventName() or ~@namespacedEvents.indexOf event.getEventName()
 			for handler in @namespacedHandlers
 				if handler.matches event
 					handler.handler.apply obj, handlerArgs

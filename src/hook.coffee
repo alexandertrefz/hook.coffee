@@ -11,7 +11,7 @@ window.hook = hook = {
 	_objects: []
 	
 	_getHandleObject: (obj) ->
-		objectIndex = _.indexOf hook._objects, obj
+		objectIndex = hook._objects.indexOf obj
 		
 		if ~objectIndex
 			hook._handles[objectIndex]
@@ -37,7 +37,7 @@ window.hook = hook = {
 			if handleObject?
 				handleObject.addHandler event, handler
 			else
-				hook._handles[_.indexOf(hook._objects, obj)] = new hook.Handle()
+				hook._handles[hook._objects.indexOf(obj)] = new hook.Handle()
 				hook.event.add.apply hook, arguments
 			
 		

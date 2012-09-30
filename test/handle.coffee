@@ -22,14 +22,14 @@ test "#addHandler(event, handler)", ->
 	
 	handle.addHandler event, handler1
 	
-	ok _.isArray(handle.events.customEvent), "_.isArray(handle.events.customEvent)"
+	ok Array.isArray(handle.events.customEvent), "Array.isArray(handle.events.customEvent)"
 	deepEqual handle.namespacedHandlers, [], "handle.namespacedHandlers is []"
 	equal handle.events.customEvent.length, 1, "handle.events.customEvent.length is 1"
 	equal handle.events.customEvent[0], handler1, "handle.events.customEvent[0] is handler1"
 	
 	handle.addHandler event, handler2
 	
-	ok _.isArray(handle.events.customEvent), "_.isArray(handle.events.customEvent)"
+	ok Array.isArray(handle.events.customEvent), "Array.isArray(handle.events.customEvent)"
 	deepEqual handle.namespacedHandlers, [], "handle.namespacedHandlers is []"
 	equal handle.events.customEvent.length, 2, "handle.events.customEvent.length is 2"
 	equal handle.events.customEvent[0], handler1, "handle.events.customEvent[0] is handler1"
@@ -41,8 +41,8 @@ test "#addHandler(event, handler)", ->
 	event.eventName = "customEvent customEvent2"
 	handle.addHandler event, handler1
 	
-	ok _.isArray(handle.events.customEvent), "_.isArray(handle.events.customEvent)"
-	ok _.isArray(handle.events.customEvent2), "_.isArray(handle.events.customEvent2)"
+	ok Array.isArray(handle.events.customEvent), "Array.isArray(handle.events.customEvent)"
+	ok Array.isArray(handle.events.customEvent2), "Array.isArray(handle.events.customEvent2)"
 	deepEqual handle.namespacedHandlers, [], "handle.namespacedHandlers is []"
 	equal handle.events.customEvent.length, 1, "handle.events.customEvent.length is 1"
 	equal handle.events.customEvent[0], handler1, "handle.events.customEvent[0] is handler1"
@@ -57,7 +57,7 @@ test "#addHandler(event, handler)", ->
 	handle.addHandler event, handler1
 	
 	deepEqual handle.events, {}, "handle.events is {}"
-	ok _.isArray(handle.namespacedHandlers), "_.isArray(handle.namespacedHandlers)"
+	ok Array.isArray(handle.namespacedHandlers), "Array.isArray(handle.namespacedHandlers)"
 	deepEqual handle.namespacedHandlers[0], new hook.NamespacedHandler(event, handler1), "handle.namespacedHandlers[0] is a NamespacedHandler with event.getNamespaces() and handler1"
 	
 
@@ -143,7 +143,7 @@ test "#removeHandler(event, handler)", ->
 	handle.addHandler event, handler2
 	handle.removeHandler event, handler1
 	
-	ok _.isArray(handle.events.customEvent), "_.isArray(handle.events.customEvent)"
+	ok Array.isArray(handle.events.customEvent), "Array.isArray(handle.events.customEvent)"
 	deepEqual handle.namespacedHandlers, [], "handle.namespacedHandlers is []"
 	equal handle.events.customEvent.length, 1, "handle.events.customEvent.length is 1"
 	equal handle.events.customEvent[0], handler2, "handle.events.customEvent[0] is handler2"
