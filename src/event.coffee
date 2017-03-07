@@ -72,11 +72,7 @@ class Event
 	
 
 	hasEventName: ->
-		if @getEventName() is ""
-			return false
-		else
-			return true
-		
+		return @getEventName() isnt ""	
 	
 
 	getEventName: ->
